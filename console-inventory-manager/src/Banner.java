@@ -18,7 +18,6 @@ public class Banner {
         //SE DEFINE UNA ESTRUCTURA REPETITIVA (BUCLE) PARA DIBUJAR DE FORMA REPETIDA LA CONSOLA
         do {
             System.out.println("┌───────────────────────────────────────────┐");
-            System.out.println("│           "+"SISTEMA - ZAPATAH"+"               │");
             System.out.println("│            MENÚ PRINCIPAL                 │");
             System.out.println("├───────────────────────────────────────────┤");
             System.out.println("│ 1. Ingreso de Nuevo Stock                 │");
@@ -43,7 +42,7 @@ public class Banner {
                     }
                 } else {
                     System.out.println("Entrada inválida. Por favor, ingrese solo números enteros del 1 al 7.");
-                    sc.next(); //
+                    sc.next();
                 }
             }
             //SE DEFINEN LOS CASOS DE USO
@@ -176,7 +175,7 @@ public class Banner {
         int cantidadAVender;
         String nombreCliente;
         String dni;
-        String codigoBoleta = datos.getListaBoletas().getLast().getCodigo();
+        String codigoBoleta = datos.getListaBoletas().getLast().codigo();
         Date fechaActual = new Date();
         List<DetalleBoleta> carritoDeCompras = new ArrayList<>();
         boolean seguirVendiendo;
@@ -321,7 +320,7 @@ public class Banner {
         //BUSCA EL DNI DENTRO DE LA LISTA DE BOLETAS
         for(Boleta boleta: datos.getListaBoletas()){
             //VERIFICA SI EXISTE ESE DNI
-            if(boleta.getDni().equals(dni)){
+            if(boleta.dni().equals(dni)){
                 //IMPRIME LA BOLETA
                 imprimirBoleta(boleta);
             }
@@ -352,18 +351,18 @@ public class Banner {
 
     private void imprimirBoleta(Boleta boleta){
         SimpleDateFormat fechaFormateada = new SimpleDateFormat("dd/MM/yyyy");
-        String DDMMYYYY = fechaFormateada.format(boleta.getFecha());
+        String DDMMYYYY = fechaFormateada.format(boleta.fecha());
         System.out.println(""
                 .concat("┌─────────────────────────────────────────────────────────────────────────────────────────────────────┐\n")
                 .concat("|    RUC:20603021640                                                                      "+DDMMYYYY+" |\n")
                 .concat("|                                      EMPRESA DE ZAPATERIA ZAPATAH                                   |\n")
-                .concat("|    BOLETA N° : "+completarEspacios(boleta.getCodigo(),85)+"|\n")
-                .concat("|  DNI CLIENTE : "+completarEspacios(boleta.getDni(),85)+"|\n")
-                .concat("|       NOMBRE : "+completarEspacios(boleta.getNombreCliente(),85)+"|\n")
+                .concat("|    BOLETA N° : "+completarEspacios(boleta.codigo(),85)+"|\n")
+                .concat("|  DNI CLIENTE : "+completarEspacios(boleta.dni(),85)+"|\n")
+                .concat("|       NOMBRE : "+completarEspacios(boleta.nombreCliente(),85)+"|\n")
                 .concat("┌─────────────────────────────────────────────────────────────────────────────────────────────────────┐\n")
                 .concat("| CANT | MODELO                                                                      | PRECIO U. |\n")
                 .concat(" ────────────────────────────────────────────────────────────────────────────────────────────────────\n")
-                .concat(detalleboleta(boleta.getDetalleBoletaList()))
+                .concat(detalleboleta(boleta.detalleBoletaList()))
         );
     }
     private String detalleboleta(List<DetalleBoleta> listDetBol){

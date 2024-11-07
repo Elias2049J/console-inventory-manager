@@ -62,7 +62,7 @@ public class Datos {
             detalleBol = new DetalleBoleta(2,"ZAPATILLA CASUAL".concat(" / ").concat("GRIS"), 128.99);
             listDetalleBoleta.add(detalleBol);
 
-            Boleta boleta = new Boleta("1000",fecha,"74162527","MARTIN ALEXIS CAJO VELIT", listDetalleBoleta);
+            Boleta boleta = new Boleta("1000",fecha,"12345678","JORGE ALEXIS CAJO VELIT", listDetalleBoleta);
             listaBoletas.add(boleta);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
